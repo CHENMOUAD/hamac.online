@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>블루칩 주식 투자 가이드 - 전문가의 투자 지도를 받으세요</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gray-dark: #2D3436;
+            --gray-medium: #4A5568;
+            --gray-light: #CBD5E0;
+            --orange-vibrant: #F39C12;
+            --orange-light: #F7B731;
+            --orange-dark: #E67E22;
+            --blue-accent: #3498DB;
+            --kakao-yellow: #FEE500;
+            --kakao-brown: #3C1E1E;
+            --white: #FFFFFF;
+            --black: #000000;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--white);
+            color: var(--gray-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--gray-dark);
+            color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--orange-vibrant);
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        /* KakaoTalk fixed button */
+        .kakao-fixed {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: var(--kakao-yellow);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow-large);
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .kakao-fixed:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .kakao-icon {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 22px;
+            height: 22px;
+            background-color: #FF4757;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--gray-dark) 0%, var(--gray-medium) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            background-color: var(--orange-vibrant);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        .hero-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            color: var(--orange-vibrant);
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .hero-stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--orange-vibrant);
+        }
+        
+        .hero-stat-text {
+            font-size: 14px;
+            opacity: 0.85;
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-large);
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            gap: 12px;
+            border: none;
+            outline: none;
+        }
+        
+        .btn-kakao {
+            background-color: var(--kakao-yellow);
+            color: var(--kakao-brown);
+            box-shadow: 0 6px 15px rgba(254, 229, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-kakao::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-kakao:hover::before {
+            left: 100%;
+        }
+        
+        .btn-kakao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(254, 229, 0, 0.4);
+        }
+        
+        .btn-primary {
+            background-color: var(--orange-vibrant);
+            color: var(--white);
+            box-shadow: 0 6px 15px rgba(243, 156, 18, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+        }
+        
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 6px 15px rgba(254, 229, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 20px rgba(254, 229, 0, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 15px rgba(254, 229, 0, 0.3);
+            }
+        }
+        
+        /* Recent Activity Section */
+        .activity {
+            padding: 80px 0;
+            background-color: #F8FAFC;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--orange-dark);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--orange-vibrant);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .activity-content {
+            position: relative;
+        }
+        
+        .activity-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .activity-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(243, 156, 18, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .activity-icon i {
+            color: var(--orange-vibrant);
+            font-size: 24px;
+        }
+        
+        .activity-text {
+            flex-grow: 1;
+        }
+        
+        .activity-text h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--gray-dark);
+        }
+        
+        .activity-text p {
+            font-size: 16px;
+            color: var(--gray-medium);
+        }
+        
+        .activity-progress {
+            margin-top: 40px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .progress-title {
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+        
+        .progress-stats {
+            color: var(--orange-vibrant);
+            font-weight: 700;
+        }
+        
+        .progress-bar-bg {
+            height: 10px;
+            background-color: var(--gray-light);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--orange-vibrant), var(--orange-light));
+            border-radius: 5px;
+            width: 85%;
+            animation: progressFill 2s ease-out;
+        }
+        
+        @keyframes progressFill {
+            from { width: 0; }
+            to { width: 85%; }
+        }
+        
+        .activity-image {
+            position: relative;
+        }
+        
+        .activity-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-large);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            top: 0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-large);
+        }
+        
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .feature-card:hover .feature-image img {
+            transform: scale(1.05);
+        }
+        
+        .feature-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-number {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--orange-vibrant);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--gray-dark);
+        }
+        
+        .feature-description {
+            color: var(--gray-medium);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: var(--gray-dark);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefits::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 0h4v4H0V0zm0 8h4v4H0V8zm0 8h4v4H0v-4zm8 0h4v4H8v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zM0 24h4v4H0v-4zm8 0h4v4H8v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zm10-16h2v2h-2v-2zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zM2 4h2v2H2V4zm0 8h2v2H2v-2zm0 8h2v2H2v-2zm0 8h2v2H2v-2zm10-20h2v2h-2V8zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zm10-20h2v2h-2V8zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zm10-20h2v2h-2V8zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2zm0 8h2v2h-2v-2z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--orange-vibrant);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .benefit-description {
+            color: var(--white);
+            opacity: 0.9;
+        }
+        
+        /* Social Proof Section */
+        .social-proof {
+            padding: 80px 0;
+            background-color: #F8FAFC;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border-top: 4px solid var(--orange-vibrant);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-large);
+        }
+        
+        .testimonial-content {
+            font-size: 16px;
+            color: var(--gray-medium);
+            margin-bottom: 20px;
+            position: relative;
+            padding-top: 30px;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            font-size: 60px;
+            color: var(--orange-vibrant);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--gray-light);
+            margin-right: 15px;
+            color: var(--gray-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: var(--gray-medium);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--orange-dark) 0%, var(--orange-vibrant) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-timer {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+        
+        .timer-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .timer-digits {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .timer-block {
+            text-align: center;
+        }
+        
+        .timer-number {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .timer-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--gray-dark);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            color: var(--orange-vibrant);
+            margin-right: 10px;
+        }
+        
+        .footer-text {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .footer-heading {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--orange-vibrant);
+        }
+        
+        .disclaimer {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .disclaimer-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .disclaimer-text {
+            opacity: 0.8;
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid,
+            .activity-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .hero-image,
+            .activity-image {
+                order: -1;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .cta-title {
+                font-size: 28px;
+            }
+            
+            .timer-digits {
+                gap: 10px;
+            }
+            
+            .timer-number {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- KakaoTalk Fixed Button -->
+    <div class="kakao-fixed" onclick="opensite()">
+        <svg class="kakao-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+        </svg>
+        <div class="notification-badge">1</div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i> 블루칩 인베스트
+                </div>
+                <button class="btn btn-kakao" onclick="opensite()">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                    </svg>
+                    카카오톡으로 문의하기
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content animate-fadeInUp">
+                    <div class="hero-tag">투자전문가의 안내</div>
+                    <h1 class="hero-title">무료 블루칩 주식과 <span>전문가의 투자 지도</span>를 받으세요</h1>
+                    <p class="hero-subtitle">
+                        저는 홍인기입니다. 중학교부터 대학교까지 학생 시절에 여러 번 거래 대회에 참가하여 우승한 경험으로 시장에서 자신의 능력을 지속적으로 입증해 온 전문가입니다.
+                    </p>
+                    <p class="hero-subtitle">
+                        역동적인 시장 환경에서 주식 선택 전략과 투자 타이밍은 중요한 과제입니다. 저희는 자산 배분 프레임워크와 다양화 전략을 제공해 드립니다.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">5,231명</div>
+                            <div class="hero-stat-text">오늘 가입한 회원</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">40명</div>
+                            <div class="hero-stat-text">남은 무료 슬롯</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-kakao btn-pulse" onclick="opensite()">
+                        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                        </svg>
+                        카카오 커뮤니티 가입하기
+                    </button>
+                </div>
+                <div class="hero-image animate-fadeInUp">
+                    <img src="http://goodmja.online/hanguogu/img/a3.png" alt="홍인기 금융 전문가">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Recent Activity Section -->
+    <section class="activity">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">최근 활동</div>
+                <h2 class="section-title">투자자들에게 주목받는 최근 활동</h2>
+                <p class="section-subtitle">
+                    금융 전문가 홍인기가 공유하는 시장 분석 방법은 참가자들에게 투자 전략 참고 자료를 제공합니다. 블루칩 주식 분석 문서와 투자 가이드가 지속적으로 배포되고 있습니다.
+                </p>
+            </div>
+            
+            <div class="activity-grid">
+                <div class="activity-content">
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="activity-text">
+                                <h4>블루칩 주식 분석 보고서</h4>
+                                <p>장기 투자 가치가 있는 블루칩 기업에 대한 심층 분석 보고서가 회원들에게 제공되고 있습니다.</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="activity-text">
+                                <h4>투자 전략 세미나</h4>
+                                <p>다양한 시장 상황에서 활용할 수 있는 투자 전략 및 자산 배분에 관한 온라인 세미나가 진행되었습니다.</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="activity-text">
+                                <h4>커뮤니티 토론 세션</h4>
+                                <p>회원들 간의 지식 공유와 질의응답을 통해 투자 인사이트를 넓히는 토론 세션이 활발히 이루어지고 있습니다.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="activity-progress">
+                        <div class="progress-header">
+                            <div class="progress-title">카카오 커뮤니티 인원 현황</div>
+                            <div class="progress-stats">5,231 / 5,271</div>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity-image">
+                    <img src="http://goodmja.online/hanguogu/img/a7.jpg" alt="투자 커뮤니티 활동">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">핵심 콘텐츠</div>
+                <h2 class="section-title">투자 가이드 3대 핵심 영역</h2>
+                <p class="section-subtitle">
+                    체계적인 투자 접근법을 위한 세 가지 핵심 영역별 전문 지식을 제공합니다
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">1</div>
+                    <div class="feature-image">
+                        <img src="http://goodmja.online/hanguogu/img/a4.jpg" alt="기업 분석">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">블루칩 주식 기본 분석 방법</h3>
+                        <p class="feature-description">
+                            본 가이드는 산업 연구 및 기업 재무 분석의 기본 방법론을 분석하여 상장 기업의 장기 가치 평가 요소를 이해하는 데 도움을 줍니다.
+                        </p>
+                        <button class="btn btn-kakao" onclick="opensite()">
+                            <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                            </svg>
+                            자세히 알아보기
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-number">2</div>
+                    <div class="feature-image">
+                        <img src="http://goodmja.online/hanguogu/img/a5.jpg" alt="시장 분석">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">시장 주기 대응 전략</h3>
+                        <p class="feature-description">
+                            다양한 시장 환경에서의 자산 배분 접근 방식을 공유하며, 변동성이 있는 시장에서의 위험 관리 기본 원칙을 포함합니다.
+                        </p>
+                        <button class="btn btn-kakao" onclick="opensite()">
+                            <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                            </svg>
+                            자세히 알아보기
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-number">3</div>
+                    <div class="feature-image">
+                        <img src="http://goodmja.online/hanguogu/img/a6.jpg" alt="포트폴리오 관리">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">포트폴리오 구성 및 위험 관리</h3>
+                        <p class="feature-description">
+                            다양화된 투자 포트폴리오 구축 로직을 설명하며, 다양한 자산 클래스의 배분 비율에 대한 조언을 제공합니다.
+                        </p>
+                        <button class="btn btn-kakao" onclick="opensite()">
+                            <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                            </svg>
+                            자세히 알아보기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">특별 혜택</div>
+                <h2 class="section-title">커뮤니티 전용 혜택</h2>
+                <p class="section-subtitle">
+                    카카오 커뮤니티에 가입하시면 받을 수 있는 특별한 혜택들을 확인하세요
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <h3 class="benefit-title">
+                    <i class="fas fa-chart-line"></i> 블루칩 주식 연구 요약
+                </h3>
+                <p class="benefit-description">
+                    다년간의 경력을 가진 홍인기가 직접 정리한 블루칩 주식 기본 분석 요약을 받아보세요. 장기 투자 가치가 있는 기업에 대한 심층 연구가 포함되어 있습니다.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <h3 class="benefit-title">
+                    <i class="fas fa-book"></i> 투자 전략 핸드북
+                </h3>
+                <p class="benefit-description">
+                    수년간의 시장 경험을 바탕으로 정리된 투자 방법론 프레임워크를 제공합니다. 기본 분석부터 포트폴리오 관리까지의 지식 체계를 다룹니다.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <h3 class="benefit-title">
+                    <i class="fas fa-newspaper"></i> 시장 동향 업데이트
+                </h3>
+                <p class="benefit-description">
+                    커뮤니티에 가입하시면 정기적으로 시장 뉴스 브리핑과 투자 지식 공유를 받을 수 있으며, 다른 투자자들과 규정에 맞는 교류를 할 수 있습니다.
+                </p>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <button class="btn btn-kakao btn-pulse" onclick="opensite()" style="font-size: 18px; padding: 16px 32px;">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                    </svg>
+                    지금 바로 커뮤니티에 가입하세요
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">커뮤니티 후기</div>
+                <h2 class="section-title">커뮤니티 분위기</h2>
+                <p class="section-subtitle">
+                    이미 5,231명의 회원들이 활발히 활동하고 있는 우리 커뮤니티의 분위기를 들어보세요
+                </p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "주식 관련 지식이 많이 부족했는데, 이 커뮤니티에 가입한 후 기본적인 투자 원칙부터 체계적으로 배울 수 있었습니다. 특히 블루칩 분석 자료가 정말 도움이 됩니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>김지훈</h4>
+                            <p>서울</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "여러 커뮤니티를 경험해 봤지만 이곳의 분위기가 가장 좋습니다. 서로 존중하고 지식을 나누며 함께 성장할 수 있는 환경이라 매우 만족하고 있습니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>이미라</h4>
+                            <p>부산</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "주식 공부를 시작한 지 얼마 되지 않았지만, 커뮤니티 회원들과 관리자분들이 친절하게 질문에 답해주셔서 빠르게 성장할 수 있었습니다. 정말 감사합니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>박준호</h4>
+                            <p>대전</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "주식 관련 정보를 찾기 위해 여러 곳을 돌아다녔는데, 여기에서 제공하는 자료의 질이 가장 높았습니다. 특히 시장 주기 대응 전략이 큰 도움이 되었습니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>최서연</h4>
+                            <p>인천</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">무료 투자 가이드를 지금 받아보세요</h2>
+                <p class="cta-description">
+                    오늘 가입하시면 블루칩 주식 분석과 투자 전략에 관한 전문 지식을 무료로 제공해 드립니다. 남은 무료 슬롯은 40명뿐입니다.
+                </p>
+                
+                <div class="cta-timer">
+                    <div class="timer-title">남은 무료 혜택 기간:</div>
+                    <div class="timer-digits">
+                        <div class="timer-block">
+                            <div class="timer-number">01</div>
+                            <div class="timer-label">일</div>
+                        </div>
+                        <div class="timer-block">
+                            <div class="timer-number">22</div>
+                            <div class="timer-label">시간</div>
+                        </div>
+                        <div class="timer-block">
+                            <div class="timer-number">45</div>
+                            <div class="timer-label">분</div>
+                        </div>
+                        <div class="timer-block">
+                            <div class="timer-number">33</div>
+                            <div class="timer-label">초</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-kakao btn-pulse" onclick="opensite()" style="font-size: 18px; padding: 16px 32px;">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
+                    </svg>
+                    지금 바로 커뮤니티에 가입하세요
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-chart-line"></i> 블루칩 인베스트
+                    </div>
+                    <p class="footer-text">
+                        블루칩 인베스트는 투자 교육 및 주식 시장 이해를 위한 정보 공유 커뮤니티입니다. 저희는 회원들에게 체계적인 투자 접근법과 금융 시장에 대한 이해를 돕는 교육 자료를 제공합니다.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">빠른 링크</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 홈</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 투자 가이드</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 커뮤니티 소개</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 연락처</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">고객 지원</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 자주 묻는 질문</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 개인정보 정책</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 이용 약관</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 문의하기</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <h4 class="disclaimer-title">중요 고지사항</h4>
+                <p class="disclaimer-text">
+                    본 플랫폼의 모든 콘텐츠는 교육 목적으로만 제공되며, 특정 투자 결과를 보장하지 않습니다. 투자자는 자신의 상황에 맞게 독립적으로 의사 결정을 해야 합니다.
+                </p>
+                <p class="disclaimer-text">
+                    투자는 원금 손실 가능성을 포함한 다양한 위험이 수반됩니다. 본 사이트에서 제공하는 정보는 투자 조언이나 추천으로 해석되어서는 안 되며, 투자 결정을 내리기 전에 적절한 전문가의 조언을 구하는 것이 좋습니다.
+                </p>
+                <p class="disclaimer-text">
+                    과거의 투자 성과가 미래의 결과를 보장하지 않으며, 시장 상황에 따라 투자 가치는 상승하거나 하락할 수 있습니다. 모든 투자자는 자신의 재정 목표, 시간 범위 및 위험 감수 능력을 고려하여 투자 결정을 내려야 합니다.
+                </p>
+                <p class="disclaimer-text">
+                    본 사이트는 금융 상품 판매나 투자 중개 서비스를 제공하지 않으며, 특정 증권이나 투자 상품의 매매를 권유하지 않습니다. 본 사이트에서 언급된 모든 회사명, 상품명은 해당 소유자의 상표 또는 등록 상표입니다.
+                </p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 블루칩 인베스트. 모든 권리 보유.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function opensite() {
+            window.open('https://pf.kakao.com/_xkFxbUs', '_blank');
+        }
+
+        // 타이머 기능
+        function startTimer() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 1);
+            endDate.setHours(endDate.getHours() + 22);
+            endDate.setMinutes(endDate.getMinutes() + 45);
+            endDate.setSeconds(endDate.getSeconds() + 33);
+            
+            function updateTimer() {
+                const now = new Date();
+                const diff = endDate - now;
+                
+                if (diff <= 0) {
+                    clearInterval(timerInterval);
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.querySelectorAll('.timer-number')[0].innerText = days.toString().padStart(2, '0');
+                document.querySelectorAll('.timer-number')[1].innerText = hours.toString().padStart(2, '0');
+                document.querySelectorAll('.timer-number')[2].innerText = minutes.toString().padStart(2, '0');
+                document.querySelectorAll('.timer-number')[3].innerText = seconds.toString().padStart(2, '0');
+            }
+            
+            updateTimer();
+            const timerInterval = setInterval(updateTimer, 1000);
+        }
+        
+        // 스크롤 애니메이션
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .benefit-card, .testimonial-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeInUp');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            startTimer();
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
