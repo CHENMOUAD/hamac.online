@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-867831212"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-867831212');
+</script>
+    <!-- Event snippet for 1 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-867831212/51QnCLPfpbYaEKyb6J0D',
+      'transaction_id': '',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>马股走势分析：2025年潜力股前瞻</title>
@@ -1443,7 +1470,7 @@
                 <p>1. 教育目的：本平台所提供的所有内容（包括但不限于市场分析、投资课程、案例分析等）均仅作教育和信息分享目的，不构成任何投资建议、推荐或招揽。我们不针对任何特定投资结果做出保证或承诺。</p>
                 <p>2. 风险提示：所有投资活动均涉及风险，包括但不限于市场风险、流动性风险、政策风险等。投资者可能会损失部分或全部投资资本。过去的表现不代表未来的结果，历史数据仅供参考。</p>
                 <p>3. 个人决策责任：投资者应根据自身的财务状况、风险承受能力、投资目标和个人情况做出独立的投资决策。在做出任何投资决定前，建议咨询专业的财务顾问或投资顾问。</p>
-                <p>4. 信息准确性：虽然我们努力确保所提供信息的准确性和及时性，但不对信息的完整性、准确性或实用性做出任何明示或暗示的保证。市场信息和数据可能随时变化，投资者应自行核实信息的准确性。</p> 
+                <p>4. 信息准确性：虽然我们努力确保所提供信息的准确性和及时性，但不对信息的完整性、准确性或实用性做出任何明示或暗示的保证。市场信息和数据可能随时变化，投资者应自行核实信息的准确性。</p>  
                 <p>5. 年龄限制：本平台内容面向25岁以上的成年人。</p>
                 <p>6. 使用条款变更：我们保留随时修改免责声明和使用条款的权利，变更后将在平台上公布。</p>
             </div>
@@ -1455,7 +1482,8 @@
 
     <script>
         function opensite() {
-            window.open('https://wa.me/message/EXAMPLE');
+            gtag_report_conversion('https://wa.me/message/EXAMPLE');
+           
         }
         
         // Create animated background particles
