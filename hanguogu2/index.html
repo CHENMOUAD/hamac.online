@@ -71,7 +71,8 @@
         
         /* Header */
         header {
-            background-color: var(--deep-blue);
+            background-color: rgba(10, 35, 66, 0.9);
+            backdrop-filter: blur(10px);
             padding: 20px 0;
             position: fixed;
             width: 100%;
@@ -256,35 +257,48 @@
             }
         }
         
-        /* Hero Section */
+        /* Hero Section - Completely Redesigned */
         .hero {
-            background: linear-gradient(to right, var(--deep-blue), var(--medium-blue));
-            padding: 140px 0 80px;
             position: relative;
+            min-height: 100vh;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--deep-blue), rgba(20, 54, 93, 0.9));
+            display: flex;
+            align-items: center;
         }
         
-        .hero::before {
-            content: "";
+        .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ddb458' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .hero-content {
-            position: relative;
+            background: radial-gradient(circle at 70% 50%, rgba(221, 180, 88, 0.08), transparent 60%);
             z-index: 1;
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ddb458' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            padding-top: 60px;
+        }
+        
+        .hero-content-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .hero-badge {
@@ -295,95 +309,215 @@
             font-weight: 600;
             padding: 8px 16px;
             border-radius: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hero-title-wrapper {
+            text-align: center;
+            margin-bottom: 40px;
         }
         
         .hero-title {
-            font-size: 44px;
+            font-size: 48px;
             font-weight: 800;
-            margin-bottom: 24px;
             line-height: 1.2;
-            color: var(--off-white);
-        }
-        
-        .hero-title span {
-            color: var(--warm-gold);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .hero-title span::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 6px;
-            background-color: var(--warm-gold);
-            bottom: 5px;
-            left: 0;
-            opacity: 0.3;
-            border-radius: 3px;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, var(--off-white), var(--warm-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
         }
         
         .hero-subtitle {
             font-size: 18px;
-            margin-bottom: 30px;
             color: rgba(245, 245, 245, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
         }
         
-        .hero-cta {
+        /* Redesigned hero image section */
+        .hero-visual {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 450px;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+            height: 100%;
+            perspective: 1000px;
+        }
+        
+        .image-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(-5deg) rotateX(5deg);
+            transition: transform 1.5s ease;
+        }
+        
+        .image-frame:hover {
+            transform: rotateY(5deg) rotateX(-5deg);
+        }
+        
+        .hero-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid rgba(221, 180, 88, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(221, 180, 88, 0.2),
+                0 0 30px rgba(221, 180, 88, 0.15);
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        /* Image decorations */
+        .image-decoration {
+            position: absolute;
+            z-index: 2;
+        }
+        
+        .decoration-1 {
+            top: -25px;
+            left: -25px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--warm-gold), var(--accent-gold));
+            opacity: 0.8;
+            animation: pulse-gold 3s infinite;
+        }
+        
+        .decoration-2 {
+            bottom: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--warm-gold), var(--accent-gold));
+            opacity: 0.8;
+            animation: pulse-gold 3s infinite 1s;
+        }
+        
+        .decoration-3 {
+            top: 30%;
+            right: -30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, var(--warm-gold), var(--accent-gold));
+            opacity: 0.8;
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite 1.5s;
+        }
+        
+        .decoration-4 {
+            bottom: 30%;
+            left: -30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, var(--warm-gold), var(--accent-gold));
+            opacity: 0.8;
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite 2s;
+        }
+        
+        @keyframes pulse-gold {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+        }
+        
+        /* Glow effects */
+        .image-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            filter: blur(30px);
+            opacity: 0.3;
+            background: var(--warm-gold);
+            z-index: -1;
+            animation: glow 4s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 0.3;
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Stats and CTA */
+        .hero-bottom {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            align-items: flex-start;
+            align-items: center;
+            margin-top: 50px;
+            padding-bottom: 50px;
         }
         
         .hero-stats {
             display: flex;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
+            margin-bottom: 30px;
+            background: rgba(10, 35, 66, 0.5);
+            border-radius: 15px;
+            padding: 20px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(221, 180, 88, 0.1);
         }
         
         .hero-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            text-align: center;
         }
         
         .hero-stat-number {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--warm-gold);
+            margin-bottom: 5px;
         }
         
         .hero-stat-text {
             font-size: 14px;
             color: rgba(245, 245, 245, 0.8);
-        }
-        
-        .hero-image {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            border: 3px solid rgba(221, 180, 88, 0.2);
-        }
-        
-        .glow-effect {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, var(--warm-gold) 0%, transparent 70%);
-            opacity: 0.1;
-            filter: blur(40px);
-            border-radius: 50%;
         }
         
         /* Recent Activity Section */
@@ -952,7 +1086,7 @@
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero-title {
-                font-size: 36px;
+                font-size: 42px;
             }
             
             .section-title {
@@ -965,7 +1099,10 @@
         }
         
         @media (max-width: 992px) {
-            .hero-grid,
+            .hero-visual {
+                height: 400px;
+            }
+            
             .activity-grid,
             .benefits-grid {
                 grid-template-columns: 1fr;
@@ -984,28 +1121,29 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            
-            .hero-image {
-                order: -1;
-            }
         }
         
         @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-visual {
+                height: 350px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
             }
             
             .testimonial-cards {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-title {
-                font-size: 30px;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 15px;
             }
             
             .timer-digits {
@@ -1030,7 +1168,11 @@
         
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 28px;
+                font-size: 30px;
+            }
+            
+            .hero-visual {
+                height: 280px;
             }
             
             .section-title {
@@ -1044,6 +1186,10 @@
             .kakao-btn {
                 padding: 10px 20px;
                 font-size: 14px;
+            }
+            
+            .image-decoration {
+                display: none;
             }
         }
     </style>
@@ -1076,40 +1222,55 @@
         </div>
     </header>
     
-    <!-- Hero Section -->
+    <!-- Hero Section - Completely Redesigned -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <i class="fas fa-bolt" style="margin-right: 5px;"></i> 금융 전문가 특별 기회
-                    </div>
-                    <h1 class="hero-title">
-                        유수진 금융 전문가와 함께하는 <span>특별 투자 기회</span>
-                    </h1>
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        
+        <div class="container hero-container">
+            <div class="hero-content-wrapper">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt" style="margin-right: 5px;"></i> 금융 전문가 특별 기회
+                </div>
+                
+                <div class="hero-title-wrapper">
+                    <h1 class="hero-title">유수진 금융 전문가와 함께하는 특별 투자 기회</h1>
                     <p class="hero-subtitle">
                         안녕하세요, 저는 류수진입니다: 자산 관리 및 금융 기술에 깊은 통찰력을 갖춘 금융 분야의 전문가입니다. 이번에 저는 귀하의 자산을 정리하고 종합적인 전략을 제공할 것입니다. 오늘 무료 블루칩 기회를 얻을 수 있습니다.
                     </p>
-                    <div class="hero-cta">
-                        <button class="kakao-btn pulsing-btn" onclick="opensite()">
-                            <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo.png" width="20" height="20" alt="카카오톡">
-                            카카오 커뮤니티 가입하기
-                        </button>
-                        <div class="hero-stats">
-                            <div class="hero-stat">
-                                <div class="hero-stat-number">6,011명</div>
-                                <div class="hero-stat-text">오늘 가입한 회원</div>
-                            </div>
-                            <div class="hero-stat">
-                                <div class="hero-stat-number">35명</div>
-                                <div class="hero-stat-text">남은 무료 슬롯</div>
-                            </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="image-container">
+                        <div class="image-frame">
+                            <img src="https://www.hamac.online/hanguogu2/img/19.jpg" alt="유수진 금융 전문가" class="hero-image">
+                            <div class="image-glow"></div>
                         </div>
+                        
+                        <!-- Image decorations -->
+                        <div class="image-decoration decoration-1"></div>
+                        <div class="image-decoration decoration-2"></div>
+                        <div class="image-decoration decoration-3"></div>
+                        <div class="image-decoration decoration-4"></div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="glow-effect"></div>
-                    <img src="https://www.hamac.online/hanguogu2/img/19.jpg" alt="유수진 금융 전문가">
+                
+                <div class="hero-bottom">
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">6,011명</div>
+                            <div class="hero-stat-text">오늘 가입한 회원</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-number">35명</div>
+                            <div class="hero-stat-text">남은 무료 슬롯</div>
+                        </div>
+                    </div>
+                    
+                    <button class="kakao-btn pulsing-btn" onclick="opensite()" style="padding: 15px 30px; font-size: 18px;">
+                        <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo.png" width="20" height="20" alt="카카오톡">
+                        카카오 커뮤니티 가입하기
+                    </button>
                 </div>
             </div>
         </div>
@@ -1497,6 +1658,26 @@
             const timerInterval = setInterval(updateTimer, 1000);
         }
         
+        // 3D 효과 추가
+        function addImageTransform() {
+            const imageContainer = document.querySelector('.image-container');
+            if (!imageContainer) return;
+            
+            imageContainer.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = imageContainer.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                
+                const imageFrame = document.querySelector('.image-frame');
+                imageFrame.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+            });
+            
+            imageContainer.addEventListener('mouseleave', () => {
+                const imageFrame = document.querySelector('.image-frame');
+                imageFrame.style.transform = 'rotateY(-5deg) rotateX(5deg)';
+            });
+        }
+        
         // 스크롤 애니메이션
         function animateOnScroll() {
             const elements = document.querySelectorAll('.feature-card, .benefit-card, .testimonial-card');
@@ -1527,6 +1708,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             startTimer();
             animateOnScroll();
+            addImageTransform();
         });
     </script>
 </body>
