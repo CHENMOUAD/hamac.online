@@ -38,6 +38,7 @@
             color: var(--gray-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-bottom: 70px; /* Add padding to account for fixed bottom button */
         }
         
         .container {
@@ -105,6 +106,31 @@
         .kakao-icon {
             width: 36px;
             height: 36px;
+        }
+        
+        /* New fixed bottom button */
+        .kakao-bottom-fixed {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--kakao-yellow);
+            color: var(--kakao-brown);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: var(--transition);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 18px;
+            gap: 10px;
+        }
+        
+        .kakao-bottom-fixed:hover {
+            background-color: #ffd43b;
         }
         
         .notification-badge {
@@ -953,10 +979,14 @@
 <body>
     <!-- KakaoTalk Fixed Button -->
     <div class="kakao-fixed" onclick="opensite()">
-        <svg class="kakao-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-        </svg>
+        <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" class="kakao-icon" alt="카카오톡">
         <div class="notification-badge">1</div>
+    </div>
+    
+    <!-- Fixed Bottom Button -->
+    <div class="kakao-bottom-fixed" onclick="opensite()">
+        <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="24" height="24" alt="카카오톡">
+        카카오톡으로 무료 투자 가이드 받기
     </div>
     
     <!-- Header -->
@@ -967,9 +997,7 @@
                     <i class="fas fa-chart-line"></i> 블루칩 인베스트
                 </div>
                 <button class="btn btn-kakao" onclick="opensite()">
-                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                    </svg>
+                    <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="20" height="20" alt="카카오톡">
                     카카오톡으로 문의하기
                 </button>
             </div>
@@ -1000,9 +1028,7 @@
                         </div>
                     </div>
                     <button class="btn btn-kakao btn-pulse" onclick="opensite()">
-                        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                        </svg>
+                        <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="20" height="20" alt="카카오톡">
                         카카오 커뮤니티 가입하기
                     </button>
                 </div>
@@ -1097,9 +1123,7 @@
                             본 가이드는 산업 연구 및 기업 재무 분석의 기본 방법론을 분석하여 상장 기업의 장기 가치 평가 요소를 이해하는 데 도움을 줍니다.
                         </p>
                         <button class="btn btn-kakao" onclick="opensite()">
-                            <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                            </svg>
+                            <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="16" height="16" alt="카카오톡">
                             자세히 알아보기
                         </button>
                     </div>
@@ -1116,9 +1140,7 @@
                             다양한 시장 환경에서의 자산 배분 접근 방식을 공유하며, 변동성이 있는 시장에서의 위험 관리 기본 원칙을 포함합니다.
                         </p>
                         <button class="btn btn-kakao" onclick="opensite()">
-                            <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                            </svg>
+                            <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="16" height="16" alt="카카오톡">
                             자세히 알아보기
                         </button>
                     </div>
@@ -1135,9 +1157,7 @@
                             다양화된 투자 포트폴리오 구축 로직을 설명하며, 다양한 자산 클래스의 배분 비율에 대한 조언을 제공합니다.
                         </p>
                         <button class="btn btn-kakao" onclick="opensite()">
-                            <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                            </svg>
+                            <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="16" height="16" alt="카카오톡">
                             자세히 알아보기
                         </button>
                     </div>
@@ -1186,9 +1206,7 @@
             
             <div class="text-center" style="margin-top: 40px;">
                 <button class="btn btn-kakao btn-pulse" onclick="opensite()" style="font-size: 18px; padding: 16px 32px;">
-                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                    </svg>
+                    <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="20" height="20" alt="카카오톡">
                     지금 바로 커뮤니티에 가입하세요
                 </button>
             </div>
@@ -1302,9 +1320,7 @@
                 </div>
                 
                 <button class="btn btn-kakao btn-pulse" onclick="opensite()" style="font-size: 18px; padding: 16px 32px;">
-                    <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6C9.55214 6 4.2911 10.0471 4.2911 15.0066C4.2911 17.8212 6.19517 20.3423 9.0913 21.8866L7.95527 25.9863C7.88166 26.2274 8.13799 26.4177 8.35061 26.2852L13.1585 23.1824C14.0653 23.3413 15.0153 23.4266 16 23.4266C22.448 23.4266 27.709 19.3795 27.709 14.42C27.709 9.46039 22.448 6 16 6Z" fill="#3C1E1E"/>
-                    </svg>
+                    <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalkshare/kakaotalk_logo_simple.png" width="20" height="20" alt="카카오톡">
                     지금 바로 커뮤니티에 가입하세요
                 </button>
             </div>
