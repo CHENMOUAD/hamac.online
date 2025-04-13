@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Systematic Learning - Become a Malaysian Stock Market Expert</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>系统化学习，成为马股投资高手</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #0B2545;
@@ -26,7 +26,7 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Noto Sans SC', sans-serif;
             color: var(--text-light);
             background-color: var(--primary-blue);
             line-height: 1.6;
@@ -444,6 +444,86 @@
             background-color: var(--accent-yellow);
             z-index: -1;
             opacity: 0.2;
+        }
+        
+        .trade-impact-section {
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+        }
+        
+        .trade-impact-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 70%);
+            z-index: -1;
+        }
+        
+        .trade-impact-container {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .trade-impact-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(241, 201, 37, 0.05) 0%, rgba(19, 49, 92, 0) 100%);
+            z-index: -1;
+        }
+        
+        .trade-impact-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .trade-impact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(241, 201, 37, 0.2);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+        }
+        
+        .trade-impact-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            line-height: 1.2;
+        }
+        
+        .trade-impact-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .trade-impact-content p {
+            margin-bottom: 15px;
+        }
+        
+        .trade-impact-highlight {
+            background-color: rgba(241, 201, 37, 0.1);
+            border-left: 3px solid var(--accent-yellow);
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
         }
         
         .case-studies-section {
@@ -959,21 +1039,21 @@
             </div>
             <div class="header-content">
                 <div class="header-text">
-                    <span class="eyebrow">Professional Investment Training</span>
-                    <h1 class="main-title">Master Malaysian Stock Market Through Systematic Learning</h1>
-                    <h2 class="subtitle">Win Through Learning: Systematic Stock Investment Strategies</h2>
+                    <span class="eyebrow">专业投资培训</span>
+                    <h1 class="main-title">系统化学习，成为马股投资高手</h1>
+                    <h2 class="subtitle">赢在学习：股票投资系统化策略</h2>
                     <div class="pain-points">
-                        <p>Are you unsettled by market volatility? Have you missed opportunities due to impulsive decisions?</p>
-                        <p>Our Malaysian Stock Investment Intensive Course is specially designed to help you build a systematic investment approach from scratch through professional training.</p>
+                        <p>您是否因市场波动而感到不安？是否曾因盲目决策而错失良机？</p>
+                        <p>我们特别推出马股投资速成班，通过专业课程，帮助您从零开始构建系统化的投资方法。</p>
                     </div>
                     <div class="btn-container">
                         <button class="btn btn-primary btn-large" onclick="opensite()">
-                            <span class="whatsapp-icon"></span>Get Course Details Now
+                            <span class="whatsapp-icon"></span>立即了解课程详情
                         </button>
                     </div>
                 </div>
                 <div class="header-image">
-                    <img src="https://www.hamac.online/121.jpg" alt="Malaysian Stock Investment Course">
+                    <img src="https://www.hamac.online/121.jpg" alt="马股投资课程">
                 </div>
             </div>
         </header>
@@ -982,35 +1062,71 @@
         <section class="highlights-section">
             <div class="highlights-bg"></div>
             <div class="section-title-container">
-                <h2 class="section-title">Course <span>Highlights</span></h2>
-                <p class="section-subtitle">Discover how our specialized training can transform your investment journey</p>
+                <h2 class="section-title">课程<span>亮点</span></h2>
+                <p class="section-subtitle">发现我们的专业培训如何改变您的投资之旅</p>
             </div>
             <div class="highlights-content">
                 <div class="highlights-cards">
                     <div class="highlight-card">
                         <h3>
                             <div class="highlight-icon">1</div>
-                            Learn Stock Investment Basics in 1 Day
+                            1天学习股票投资基础
                         </h3>
-                        <p>Understand how to evaluate company fundamentals and screen quality stocks.</p>
-                        <p>Master market analysis techniques and avoid emotional investing.</p>
+                        <p>了解如何评估公司基本面，筛选优质股。</p>
+                        <p>掌握市场分析技巧，避免情绪化投资。</p>
                     </div>
                     <div class="highlight-card">
                         <h3>
                             <div class="highlight-icon">2</div>
-                            Big Data-Supported Market Analysis
+                            大数据支持的市场分析
                         </h3>
-                        <p>Access the latest Malaysian stock market data and trend interpretations.</p>
-                        <p>Learn to use data to screen potential investment targets.</p>
+                        <p>提供马股最新市场数据和趋势解读。</p>
+                        <p>学习如何利用数据筛选有潜力的投资标的。</p>
                     </div>
                     <div class="btn-container">
                         <button class="btn btn-primary" onclick="opensite()">
-                            <span class="whatsapp-icon"></span>Inquire About Course Content
+                            <span class="whatsapp-icon"></span>咨询课程内容
                         </button>
                     </div>
                 </div>
                 <div class="highlights-image">
-                    <img src="https://www.hamac.online/487jpg" alt="Malaysian Stock Market Analysis">
+                    <img src="487.jpg" alt="马股市场分析">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Trade Impact Analysis Section -->
+        <section class="trade-impact-section">
+            <div class="trade-impact-bg"></div>
+            <div class="section-title-container">
+                <h2 class="section-title">热点<span>剖析</span></h2>
+                <p class="section-subtitle">及时把握最新市场动态，提前规划投资策略</p>
+            </div>
+            <div class="trade-impact-container">
+                <div class="trade-impact-header">
+                    <div class="trade-impact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <h3 class="trade-impact-title">美中贸易局势对大马市场的影响</h3>
+                </div>
+                <div class="trade-impact-content">
+                    <p>特朗普推动"对等关税"政策，美中贸易局势再生变数。这一变化可能对马来西亚作为出口导向型经济体带来哪些挑战与机遇？</p>
+                    
+                    <div class="trade-impact-highlight">
+                        <p>出口导向型经济是否会受到挑战？电子股、制造业的潜在机会和风险是什么？</p>
+                    </div>
+                    
+                    <p>我们将基于专业数据和历史趋势，帮助您更好地理解市场影响并提前规划。通过系统化分析，识别可能出现的结构性变化，并调整投资策略以应对全球贸易格局的调整。</p>
+                    
+                    <div class="btn-container">
+                        <button class="btn btn-secondary" onclick="opensite()">
+                            <span class="whatsapp-icon"></span>获取深度分析报告
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1019,36 +1135,36 @@
         <section class="case-studies-section">
             <div class="case-studies-container">
                 <div class="section-title-container">
-                    <h2 class="section-title">Student <span>Success Stories</span></h2>
-                    <p class="section-subtitle">Real experiences from our investment course participants</p>
+                    <h2 class="section-title">学员<span>案例分享</span></h2>
+                    <p class="section-subtitle">来自我们投资课程参与者的真实经历</p>
                 </div>
                 <div class="case-studies-grid">
                     <div class="case-study">
                         <div class="case-accent"></div>
-                        <h3>Mr. Zhang, 35, Small Business Owner</h3>
+                        <h3>张先生，35岁，小企业主</h3>
                         <div class="case-study-content">
-                            <p>Mr. Zhang always hoped to increase his income through investments but had no relevant experience and felt confused about the market. After attending our investment foundation course, he learned how to analyze company financial statements and distinguish different industry trends. Through 6 months of continuous learning, he gradually built his own investment portfolio.</p>
+                            <p>张先生一直希望通过投资来增加收入，但没有相关经验，对市场感到迷茫。他参加了投资基础课程后，学会了如何分析公司财务报表和区分不同的行业趋势。通过6个月的持续学习，他逐渐建立了自己的投资组合。</p>
                         </div>
                         <div class="case-quote">
                             <span class="quote-mark">"</span>
-                            <p>The course made me realize that investing is not just about buying and selling stocks, but making decisions based on data and logic. Although my investment returns are still fluctuating, I have a clearer plan for the future.</p>
+                            <p>课程让我认识到投资不仅仅是买卖股票，而是要基于数据和逻辑做出决策。虽然目前我的投资收益还在波动中，但我对未来的规划更加清晰了。</p>
                         </div>
                     </div>
                     <div class="case-study">
                         <div class="case-accent"></div>
-                        <h3>Ms. Li, 28, Company Employee</h3>
+                        <h3>李女士，28岁，公司职员</h3>
                         <div class="case-study-content">
-                            <p>Ms. Li had always been interested in investing but felt she lacked professional knowledge. She enrolled in an online investment course and systematically learned the basics of risk management, asset allocation, and market analysis. After the course, she began to try small investments and gradually built a diversified investment portfolio.</p>
+                            <p>李女士对投资一直很感兴趣，但总觉得自己缺乏专业知识。她报名参加了一次线上投资课程，系统学习了风险管理、资产配置和市场分析的基础知识。课程结束后，她开始尝试小额投资，并逐步建立了分散化的投资组合。</p>
                         </div>
                         <div class="case-quote">
                             <span class="quote-mark">"</span>
-                            <p>The course taught me how to protect my capital by controlling risk, and made me understand that investing is something that needs long-term planning. I no longer buy stocks based on trends, but make decisions according to my financial goals.</p>
+                            <p>课程教会了我如何通过控制风险来保护本金，同时让我明白了投资是一件需要长期规划的事情。我不再跟风买入股票，而是根据自己的财务目标进行决策。</p>
                         </div>
                     </div>
                 </div>
                 <div class="btn-container">
                     <button class="btn btn-secondary" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>View More Student Stories
+                        <span class="whatsapp-icon"></span>查看更多学员案例
                     </button>
                 </div>
             </div>
@@ -1058,35 +1174,35 @@
         <section class="benefits-section">
             <div class="benefits-bg"></div>
             <div class="benefits-content">
-                <div class="benefits-badge">Limited Time Offer</div>
+                <div class="benefits-badge">限时优惠</div>
                 <div class="section-title-container">
-                    <h2 class="section-title">Enrollment <span>Benefits</span></h2>
-                    <p class="section-subtitle">Exclusive advantages when you join our investment course</p>
+                    <h2 class="section-title">报名<span>福利</span></h2>
+                    <p class="section-subtitle">加入我们投资课程的专属优势</p>
                 </div>
                 <div class="benefits-grid">
                     <div class="benefit-card">
                         <div class="benefit-icon">1</div>
-                        <h4>Professional Instructor Guidance</h4>
-                        <p>Guided by experienced investment mentors throughout the course, ready to answer your investment questions at any time.</p>
+                        <h4>专业讲师指导</h4>
+                        <p>由经验丰富的投资导师全程指导，随时解答您的投资疑问。</p>
                     </div>
                     <div class="benefit-card">
                         <div class="benefit-icon">2</div>
-                        <h4>Systematic Teaching</h4>
-                        <p>From basic knowledge to practical skills, step by step helping you master investment essentials.</p>
+                        <h4>系统化教学</h4>
+                        <p>从基础知识到实战技巧，循序渐进帮助您掌握投资要领。</p>
                     </div>
                     <div class="benefit-card">
                         <div class="benefit-icon">3</div>
-                        <h4>Practical Case Analysis</h4>
-                        <p>Learn through real cases, understand market operations and investment decision-making processes.</p>
+                        <h4>实战案例分析</h4>
+                        <p>通过真实案例学习，理解市场运作和投资决策过程。</p>
                     </div>
                 </div>
                 <div class="limited-spots">
-                    <p>Course originally priced at RM899, now <span class="spots-highlight">offering limited free spots</span>, with only <span class="spots-highlight">30 seats remaining</span>.</p>
-                    <p>Limited spots available, first come first served!</p>
+                    <p>原价RM899的课程，现<span class="spots-highlight">免费开放部分名额</span>，剩余<span class="spots-highlight">30席</span>。</p>
+                    <p>名额有限，先到先得！</p>
                 </div>
                 <div class="btn-container">
                     <button class="btn btn-primary btn-large" onclick="opensite()">
-                        <span class="whatsapp-icon"></span>Enroll Now For Free, Secure Your Spot
+                        <span class="whatsapp-icon"></span>立刻免费报名，锁定名额
                     </button>
                 </div>
             </div>
@@ -1096,18 +1212,18 @@
         <footer>
             <div class="footer-bg"></div>
             <div class="disclaimer">
-                <h3>Disclaimer</h3>
-                <p>1. Educational Purpose: This course is designed to provide educational content on stock investment, helping students understand basic investment knowledge and analytical methods, and does not constitute any investment advice or recommendation.</p>
-                <p>2. Risk Notice: All investment activities involve risks, including but not limited to market risk, liquidity risk, and information risk. Investors may suffer principal loss and should make independent decisions based on their financial situation, risk tolerance, and investment objectives.</p>
-                <p>3. Non-Guarantee Statement: Course content is based on public market information and professional analysis, and does not guarantee any specific investment return or result. Past performance does not represent future returns.</p>
-                <p>4. Personal Responsibility: Participants should be fully responsible for their own investment decisions. Course instructors and organizers do not bear any legal or financial responsibility for students' investment results.</p>
-                <p>5. Professional Advice: Before making major investment decisions, it is recommended to consult licensed financial advisors or investment experts for professional advice.</p>
-                <p>6. Content Compliance: This course content complies with relevant regulations of the Securities Commission Malaysia (SC) and Bank Negara Malaysia (BNM), as well as Google Malaysia's financial advertising policies.</p>
-                <p>7. Information Update: Market data and information may change at any time, and students should verify the latest information themselves.</p>
-                <p>8. Privacy Protection: We respect and protect all students' personal information and will not use the information for unauthorized purposes.</p>
+                <h3>免责声明</h3>
+                <p>1. 教育目的：本课程旨在提供股票投资的教育性内容，帮助学员了解投资基本知识和分析方法，不构成任何投资建议或推荐。</p>
+                <p>2. 风险提示：所有投资行为均存在风险，包括但不限于市场风险、流动性风险和信息风险。投资者可能会遭受本金损失，应根据自身财务状况、风险承受能力和投资目标做出独立决策。</p>
+                <p>3. 非保证性声明：课程内容基于公开市场信息和专业分析，不保证任何特定投资收益或结果。过去的表现不代表未来的回报。</p>
+                <p>4. 个人责任：参与者应对自己的投资决策负全部责任。课程导师和组织者不对学员的投资结果承担任何法律或财务责任。</p>
+                <p>5. 专业建议：在做出重大投资决策前，建议咨询持牌财务顾问或投资专家的专业意见。</p>
+                <p>6. 内容合规：本课程内容符合马来西亚证券委员会(SC)和马来西亚国家银行(BNM)的相关规定，以及谷歌马来西亚金融广告政策。</p>
+                <p>7. 信息更新：市场数据和信息可能随时变化，学员应自行核实最新信息。</p>
+                <p>8. 隐私保护：我们尊重并保护所有学员的个人信息，不会将信息用于未经授权的用途。</p>
             </div>
             <div class="copyright">
-                <p>© 2023 Malaysian Stock Investment Education Center. All Rights Reserved.</p>
+                <p>© 2023 马股投资教育中心. 版权所有.</p>
             </div>
         </footer>
     </div>
