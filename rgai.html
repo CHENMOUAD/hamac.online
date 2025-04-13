@@ -13,7 +13,23 @@
 </script>
 
  
-
+    <!-- Event snippet for 4.3 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-476077764/Vu3RCMKZ_7caEMS9geMB',
+      'transaction_id': '',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
     
     
     <meta charset="UTF-8">
@@ -595,7 +611,7 @@
         }
         
         function opensite() {
-             gtag('event', 'conversion', {'send_to': 'AW-476077764/Vu3RCMKZ_7caEMS9geMB'});
+             gtag_report_conversion();
             window.location.href="https://jpcokou.com/jpcookui03";
         }
     </script>
